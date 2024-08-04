@@ -1,15 +1,11 @@
 const CommentsModel = require('../models/CommentsModel');
 const comments = require('../models/CommentsModel')
 
-CommentsModel.hasOne(CommentsModel,{
-    foreignKey:'parent_id', 
-    as:'children'})
 
-    CommentsModel.belongsTo(CommentsModel,{
-        foreignKey: 'parent_id',
-        as: 'parents'
-    })
 class CommentsController {
+    constructor(){
+        CommentsModel.associate();
+    }
 
     async listar(request,response){
        

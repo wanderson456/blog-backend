@@ -2,7 +2,18 @@ const {  DataTypes, Model } = require('sequelize');
 const connection = require('../config/connection');
 const PostModel = require('../models/PostModel');
 const UserModel = require('../models/UserModel');
-class CommentsModel extends Model {}
+class CommentsModel extends Model {
+    static associate(models) {
+        CommentsModel.hasOne(CommentsModel,{
+            foreignKey:'parent_id', 
+            as:'children'})
+        
+            CommentsModel.belongsTo(CommentsModel,{
+                foreignKey: 'parent_id',
+                as: 'parents'
+            })
+    }
+}
 
 CommentsModel.init(
   

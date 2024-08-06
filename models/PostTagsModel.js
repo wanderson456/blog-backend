@@ -12,7 +12,7 @@ PostTagsModel.init(
         references: {
             model: PostModel,
             key: 'id',
-        }
+        },onDelete:"CASCADE"
     },
     tag_id:{
         type:DataTypes.INTEGER,
@@ -20,7 +20,7 @@ PostTagsModel.init(
         references: {
             model: TagsModel,
             key: 'id'
-        }
+        },onDelete:"CASCADE"
     }
     
   },

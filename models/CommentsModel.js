@@ -20,8 +20,8 @@ CommentsModel.init(
     { 
         id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }, 
         content: { type: DataTypes.TEXT, allowNull: false }, 
-        user_id: { type: DataTypes.INTEGER, references: { model: UserModel, key: 'id' } },
-        post_id: { type: DataTypes.INTEGER, references: { model: PostModel, key: 'id' } },
+        user_id: { type: DataTypes.INTEGER, references: { model: UserModel, key: 'id' },onDelete:" NO ACTION" },
+        post_id: { type: DataTypes.INTEGER, references: { model: PostModel, key: 'id' },onDelete:"CASCADE" },
         parent_id: { type: DataTypes.INTEGER, allowNull: true, references: { model: CommentsModel, key: 'id' },
     
    

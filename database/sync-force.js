@@ -3,7 +3,8 @@ require('../models/TagsModel');
 require('../models/UserTypesModel');
 require('../models/UserModel');
 require('../models/ProfileModel');
+require('../models/CommentsModel');
 require('../models/PostModel');
 require('../models/PostTagsModel');
-require('../models/CommentsModel');
-connection.sync({force: true});
+
+connection.sync({alter: true});

@@ -9,7 +9,7 @@ PostsRotas.get('/posts', postsController.listar)
 
 PostsRotas.post('/posts',postsController.criar)
 
-
-
+PostsRotas.put('/posts/:id',postsController.atualizar)
+PostsRotas.delete('/posts/:id',postsController.deletar)
 
 module.exports = PostsRotas;

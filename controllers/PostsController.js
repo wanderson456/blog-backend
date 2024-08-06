@@ -15,19 +15,11 @@ class PostControler {
     }
 
     async listar(request,response){
-      
+      let query = request.query;
+      query=query.fields.split(',');
        
-        let dados   = await PostModel.findAll({
-            include:[{
-                model: UserModel,
-                include: ProfileModel
-            },
-            {
-                model: TagsModel,
-                
-            }]
-        
-        
+        const dados   = await PostModel.findAll({
+            attributes:query
         })
         return response.json(dados);
     }
@@ -45,8 +37,22 @@ class PostControler {
             }
           
         });
-        post.setTags(tags);
+        //post.setTags(tags);
         return response.status(201).json({message: "Post cadastrado com sucesso"});
+    }
+
+    async atualizar(request,response){
+        const id = request.params.id;
+        const body= request.body;
+        await PostModel.update(body,{where: {id}});
+        return response.status(200).json({message: "Post atualizado com sucesso"});
+
+    }
+
+    async deletar(request,response){
+        const id = request.params.id;
+        await PostModel.destroy({where: {id}});
+        return response.status(200).json({message: "Post deletado com sucesso"});
     }
 
 }

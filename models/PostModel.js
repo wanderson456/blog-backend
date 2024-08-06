@@ -36,6 +36,10 @@ PostModel.init(
         type:DataTypes.STRING(45),
          allowNull: false,
     },
+    content:{
+       type: DataTypes.TEXT,
+         allowNull: true,
+    },
     image_path:{
         type:DataTypes.STRING(255),
         

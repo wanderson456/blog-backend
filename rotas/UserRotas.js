@@ -8,9 +8,7 @@ const userController = new UserController();
 
 UsuariosRotas.get('/users', userController.listar)
 UsuariosRotas.post('/users', userController.criar)
-
-
-//UsuariosRotas.put('/users/:id',usuariosController.atualizar)
+//UsuariosRotas.put('/users/:id',userControllerr)
 //UsuariosRotas.delete('/users/:id',usuariosController.deletar)
 
 

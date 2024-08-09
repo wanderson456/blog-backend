@@ -7,27 +7,23 @@ const CommentsRotas = require('./CommentsRotas')
 require('dotenv').config()
 const RotasPrivatas = express.Router();
 RotasPrivatas.use((request,response,next)=>{
-    return next();
-    let auth = false
-    if(request.headers.token){
-        const {token} = request.headers;
-        try {
-            jwt.verify(token,process.env.APP_KEY_TOKEN);
-            auth = true;
-        } catch (e) {
-            return response.status(403).send(e)
-            
-            
-        }
+    // verificando autorizaçao 
+    let logged = false;
+    const token = request.headers.token;
+    try {
+        jwt.verify(token,process.env.APP_KEY_TOKEN);
+        logged = true;
         
-
+    } catch (JsonWebtokenerror) {
+        logged = false;
+        
     }
-    
- if(auth == false){
-    return response.status(403).send("nao autorizado")
-
- }
- next();
+    if(logged === false){
+        return response.status(403).send('Não autorizado')
+    }
+   
+    next();
+ 
 
 });
 
